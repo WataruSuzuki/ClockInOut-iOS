@@ -15,6 +15,7 @@
 		CC51837E231E46D00029CEE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC51837C231E46D00029CEE2 /* LaunchScreen.storyboard */; };
 		CC518389231E46D10029CEE2 /* ClockInOutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC518388231E46D10029CEE2 /* ClockInOutTests.swift */; };
 		CC518394231E46D10029CEE2 /* ClockInOutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC518393231E46D10029CEE2 /* ClockInOutUITests.swift */; };
+		CC5183A2231E55950029CEE2 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5183A1231E55950029CEE2 /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		CC51838F231E46D10029CEE2 /* ClockInOutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClockInOutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC518393231E46D10029CEE2 /* ClockInOutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockInOutUITests.swift; sourceTree = "<group>"; };
 		CC518395231E46D10029CEE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC5183A1231E55950029CEE2 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				CC51837A231E46D00029CEE2 /* Assets.xcassets */,
 				CC51837C231E46D00029CEE2 /* LaunchScreen.storyboard */,
 				CC51837F231E46D10029CEE2 /* Info.plist */,
+				CC5183A1231E55950029CEE2 /* SettingViewController.swift */,
 			);
 			path = ClockInOut;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				CC518376231E46CD0029CEE2 /* SecondViewController.swift in Sources */,
 				CC518372231E46CD0029CEE2 /* AppDelegate.swift in Sources */,
 				CC518374231E46CD0029CEE2 /* FirstViewController.swift in Sources */,
+				CC5183A2231E55950029CEE2 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
