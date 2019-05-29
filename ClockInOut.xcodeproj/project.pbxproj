@@ -16,6 +16,7 @@
 		CC518389231E46D10029CEE2 /* ClockInOutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC518388231E46D10029CEE2 /* ClockInOutTests.swift */; };
 		CC518394231E46D10029CEE2 /* ClockInOutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC518393231E46D10029CEE2 /* ClockInOutUITests.swift */; };
 		CC5183A2231E55950029CEE2 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5183A1231E55950029CEE2 /* SettingViewController.swift */; };
+		CC5183A4231E57890029CEE2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5183A3231E57890029CEE2 /* LocationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		CC518393231E46D10029CEE2 /* ClockInOutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockInOutUITests.swift; sourceTree = "<group>"; };
 		CC518395231E46D10029CEE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC5183A1231E55950029CEE2 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		CC5183A3231E57890029CEE2 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				CC51837C231E46D00029CEE2 /* LaunchScreen.storyboard */,
 				CC51837F231E46D10029CEE2 /* Info.plist */,
 				CC5183A1231E55950029CEE2 /* SettingViewController.swift */,
+				CC5183A3231E57890029CEE2 /* LocationService.swift */,
 			);
 			path = ClockInOut;
 			sourceTree = "<group>";
@@ -199,6 +202,11 @@
 				TargetAttributes = {
 					CC51836D231E46CD0029CEE2 = {
 						CreatedOnToolsVersion = 10.3;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					CC518383231E46D10029CEE2 = {
 						CreatedOnToolsVersion = 10.3;
@@ -264,6 +272,7 @@
 			files = (
 				CC518376231E46CD0029CEE2 /* SecondViewController.swift in Sources */,
 				CC518372231E46CD0029CEE2 /* AppDelegate.swift in Sources */,
+				CC5183A4231E57890029CEE2 /* LocationService.swift in Sources */,
 				CC518374231E46CD0029CEE2 /* FirstViewController.swift in Sources */,
 				CC5183A2231E55950029CEE2 /* SettingViewController.swift in Sources */,
 			);
