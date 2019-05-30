@@ -1,0 +1,36 @@
+PODS:
+  - AUPickerCell (1.0.2.0)
+  - PureLayout (3.1.4)
+  - SwiftExtensionChimera (0.0.2):
+    - PureLayout
+    - TinyConstraints
+  - TinyConstraints (4.0.1)
+
+DEPENDENCIES:
+  - AUPickerCell
+  - SwiftExtensionChimera (from `https://github.com/WataruSuzuki/SwiftExtensionChimera.git`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AUPickerCell
+    - PureLayout
+    - TinyConstraints
+
+EXTERNAL SOURCES:
+  SwiftExtensionChimera:
+    :git: https://github.com/WataruSuzuki/SwiftExtensionChimera.git
+
+CHECKOUT OPTIONS:
+  SwiftExtensionChimera:
+    :commit: 57d2d56c6fefd0b5804037eea81540e3b6b78101
+    :git: https://github.com/WataruSuzuki/SwiftExtensionChimera.git
+
+SPEC CHECKSUMS:
+  AUPickerCell: b6f788d62f449014204776ff6fdc841aebbc352f
+  PureLayout: f08c01b8dec00bb14a1fefa3de4c7d9c265df85e
+  SwiftExtensionChimera: d3753944d68e2c3d197797f41af45849b541bdac
+  TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
+
+PODFILE CHECKSUM: ee9d8174e4bb38733955ab962635ec9da95db520
+
+COCOAPODS: 1.7.4

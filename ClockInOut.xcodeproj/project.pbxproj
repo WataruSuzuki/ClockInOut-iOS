@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26127119EEECC41E511802BC /* Pods_ClockInOut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56DB6F8474E83F10D5F560A2 /* Pods_ClockInOut.framework */; };
+		416AC1A1168F466423B6B8E2 /* Pods_ClockInOutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA81E6FD3A3C2B80CAA2A98 /* Pods_ClockInOutTests.framework */; };
 		CC518372231E46CD0029CEE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC518371231E46CD0029CEE2 /* AppDelegate.swift */; };
 		CC518374231E46CD0029CEE2 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC518373231E46CD0029CEE2 /* FirstViewController.swift */; };
 		CC518376231E46CD0029CEE2 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC518375231E46CD0029CEE2 /* SecondViewController.swift */; };
@@ -37,6 +39,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4AA81E6FD3A3C2B80CAA2A98 /* Pods_ClockInOutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClockInOutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56DB6F8474E83F10D5F560A2 /* Pods_ClockInOut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClockInOut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E08C7A025F7379228C17BA4 /* Pods-ClockInOutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClockInOutTests.release.xcconfig"; path = "Target Support Files/Pods-ClockInOutTests/Pods-ClockInOutTests.release.xcconfig"; sourceTree = "<group>"; };
+		6A567A4FE8770A70E14BD93D /* Pods-ClockInOutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClockInOutTests.debug.xcconfig"; path = "Target Support Files/Pods-ClockInOutTests/Pods-ClockInOutTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6DA9253FC20DA218D7E4332B /* Pods-ClockInOut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClockInOut.debug.xcconfig"; path = "Target Support Files/Pods-ClockInOut/Pods-ClockInOut.debug.xcconfig"; sourceTree = "<group>"; };
+		C99BE7708C12198B20DD3D3F /* Pods-ClockInOut.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClockInOut.release.xcconfig"; path = "Target Support Files/Pods-ClockInOut/Pods-ClockInOut.release.xcconfig"; sourceTree = "<group>"; };
 		CC51836E231E46CD0029CEE2 /* ClockInOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClockInOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC518371231E46CD0029CEE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC518373231E46CD0029CEE2 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26127119EEECC41E511802BC /* Pods_ClockInOut.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				416AC1A1168F466423B6B8E2 /* Pods_ClockInOutTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5238CF3DA4D8E18652EBB5B4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				56DB6F8474E83F10D5F560A2 /* Pods_ClockInOut.framework */,
+				4AA81E6FD3A3C2B80CAA2A98 /* Pods_ClockInOutTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CC518365231E46CD0029CEE2 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +106,8 @@
 				CC518387231E46D10029CEE2 /* ClockInOutTests */,
 				CC518392231E46D10029CEE2 /* ClockInOutUITests */,
 				CC51836F231E46CD0029CEE2 /* Products */,
+				F3BEFF9742DB20BBB44A8536 /* Pods */,
+				5238CF3DA4D8E18652EBB5B4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,6 +155,18 @@
 			path = ClockInOutUITests;
 			sourceTree = "<group>";
 		};
+		F3BEFF9742DB20BBB44A8536 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6DA9253FC20DA218D7E4332B /* Pods-ClockInOut.debug.xcconfig */,
+				C99BE7708C12198B20DD3D3F /* Pods-ClockInOut.release.xcconfig */,
+				6A567A4FE8770A70E14BD93D /* Pods-ClockInOutTests.debug.xcconfig */,
+				5E08C7A025F7379228C17BA4 /* Pods-ClockInOutTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,9 +174,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC518398231E46D10029CEE2 /* Build configuration list for PBXNativeTarget "ClockInOut" */;
 			buildPhases = (
+				868A95667CE15F53F9D67EA3 /* [CP] Check Pods Manifest.lock */,
 				CC51836A231E46CD0029CEE2 /* Sources */,
 				CC51836B231E46CD0029CEE2 /* Frameworks */,
 				CC51836C231E46CD0029CEE2 /* Resources */,
+				09542B75677859D6E47256A3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -158,6 +193,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC51839B231E46D10029CEE2 /* Build configuration list for PBXNativeTarget "ClockInOutTests" */;
 			buildPhases = (
+				C9DC974AA75B14AECE23B85A /* [CP] Check Pods Manifest.lock */,
 				CC518380231E46D10029CEE2 /* Sources */,
 				CC518381231E46D10029CEE2 /* Frameworks */,
 				CC518382231E46D10029CEE2 /* Resources */,
@@ -264,6 +300,70 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		09542B75677859D6E47256A3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ClockInOut/Pods-ClockInOut-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ClockInOut/Pods-ClockInOut-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ClockInOut/Pods-ClockInOut-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		868A95667CE15F53F9D67EA3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ClockInOut-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9DC974AA75B14AECE23B85A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ClockInOutTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CC51836A231E46CD0029CEE2 /* Sources */ = {
@@ -447,6 +547,7 @@
 		};
 		CC518399231E46D10029CEE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DA9253FC20DA218D7E4332B /* Pods-ClockInOut.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -465,6 +566,7 @@
 		};
 		CC51839A231E46D10029CEE2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C99BE7708C12198B20DD3D3F /* Pods-ClockInOut.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -483,6 +585,7 @@
 		};
 		CC51839C231E46D10029CEE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A567A4FE8770A70E14BD93D /* Pods-ClockInOutTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -504,6 +607,7 @@
 		};
 		CC51839D231E46D10029CEE2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E08C7A025F7379228C17BA4 /* Pods-ClockInOutTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
