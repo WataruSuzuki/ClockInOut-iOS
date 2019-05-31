@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AUPickerCell
 
-class SettingViewController: UITableViewController {
+class SettingViewController: UITableViewController, AUPickerCellDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +36,24 @@ class SettingViewController: UITableViewController {
 
         // Configure the cell...
         if let menu = Sections(rawValue: indexPath.section) {
-            cell.textLabel?.text = String(describing: menu)
+            switch menu {
+            case .timeToOn: fallthrough
+            case .timeToLeave:
+                return pickerCell(menu, cellForRowAt: indexPath)
+            case .officeLocation:
+                cell.textLabel?.text = String(describing: menu)
+            }
         }
 
+        return cell
+    }
+    
+    private func pickerCell(_ menu: Sections, cellForRowAt indexPath: IndexPath) -> AUPickerCell {
+        let cell = AUPickerCell(type: .default, reuseIdentifier: "reuseIdentifier")
+        cell.delegate = self
+        cell.values = ["One", "Two", "Three"]
+        cell.selectedRow = 1
+        cell.leftLabel.text = "Options"
         return cell
     }
 
@@ -53,10 +69,25 @@ class SettingViewController: UITableViewController {
         case .timeToOn:
             fallthrough
         case .timeToLeave:
-            break
+            if let cell = tableView.cellForRow(at: indexPath) as? AUPickerCell {
+                cell.selectedInTableView(tableView)
+            }
         }
     }
-
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let cell = tableView.cellForRow(at: indexPath) as? AUPickerCell {
+            return cell.height
+        }
+        return super.tableView(tableView, heightForRowAt: indexPath)
+    }
+    
+    // MARK: - AUPickerCellDelegate
+    
+    func auPickerCell(_ cell: AUPickerCell, didPick row: Int, value: Any) {
+        
+    }
+    
     /*
     // MARK: - Navigation
 
