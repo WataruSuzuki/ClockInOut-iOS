@@ -12,7 +12,7 @@ target "ClockInOut" do
 
 end
 
-# post_install do | installer |
-#     require 'fileutils'
-#     FileUtils.cp_r('Pods/Target Support Files/Pods-ClockInOut/Pods-ClockInOut-acknowledgements.plist', 'ClockInOut/Settings.bundle/Pods-acknowledgements.plist')
-# end
+post_install do | installer |
+    require 'fileutils'
+    FileUtils.cp_r('Pods/Target Support Files/Pods-ClockInOut/Pods-ClockInOut-acknowledgements.plist', 'ClockInOut/Settings.bundle/Pods-acknowledgements.plist')
+end

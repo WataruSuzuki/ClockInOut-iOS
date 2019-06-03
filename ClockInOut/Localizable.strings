@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  ClockInOut
+
+  Created by 鈴木航 on 2019/09/04.
+  Copyright © 2019 WataruSuzuki. All rights reserved.
+*/
+
+NoData = "No Data";
+Confirm = "Confirm";
+UpdateOfficeLocation = "Update office location by current position?";
+Yes = "Yes";
+
+officeLocation = "Office location";
+timeToOn = "Time to Come";
+timeToLeave = "Time to leave";
+NotSetYourTimeToOnOrLeave = "Not set the Time to Come or Leave yet...";

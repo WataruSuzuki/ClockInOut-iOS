@@ -8,6 +8,7 @@
 
 import UIKit
 import AUPickerCell
+import SwiftExtensionChimera
 
 class SettingViewController: UITableViewController, AUPickerCellDelegate {
 
@@ -42,6 +43,7 @@ class SettingViewController: UITableViewController, AUPickerCellDelegate {
                 return pickerCell(menu, cellForRowAt: indexPath)
             case .officeLocation:
                 cell.textLabel?.text = String(describing: menu)
+                cell.detailTextLabel?.text = LocationService.shared.officeAddress
             }
         }
 
@@ -49,11 +51,15 @@ class SettingViewController: UITableViewController, AUPickerCellDelegate {
     }
     
     private func pickerCell(_ menu: Sections, cellForRowAt indexPath: IndexPath) -> AUPickerCell {
-        let cell = AUPickerCell(type: .default, reuseIdentifier: "reuseIdentifier")
+        let cell = AUPickerCell(type: .date, reuseIdentifier: "reuseIdentifier")
         cell.delegate = self
-        cell.values = ["One", "Two", "Three"]
-        cell.selectedRow = 1
-        cell.leftLabel.text = "Options"
+        cell.datePickerMode = .time
+        cell.timeStyle = .short
+        cell.dateStyle = .none
+        cell.leftLabel.text = menu.describing.localized
+        if let savedDate = menu.savedDate() {
+            cell.setDate(savedDate, animated: false)
+        }
         return cell
     }
 
@@ -61,10 +67,11 @@ class SettingViewController: UITableViewController, AUPickerCellDelegate {
         guard let menu = Sections(rawValue: indexPath.section) else { return }
         switch menu {
         case .officeLocation:
-            let alert = UIAlertController(title: "confirm", message: "updateOfficeLocation", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "yes", style: .default, handler: { (action) in
+            let alert = UIAlertController(title: "Confirm".localized, message: "UpdateOfficeLocation".localized, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes".localized, style: .default, handler: { (action) in
                 LocationService.shared.isUpdateOfficeLocation = true
             }))
+            alert.addEmptyCancelAction()
             present(alert, animated: true, completion: nil)
         case .timeToOn:
             fallthrough
@@ -85,7 +92,21 @@ class SettingViewController: UITableViewController, AUPickerCellDelegate {
     // MARK: - AUPickerCellDelegate
     
     func auPickerCell(_ cell: AUPickerCell, didPick row: Int, value: Any) {
-        
+        guard let date = value as? Date else {
+            print(value)
+            return
+        }
+        let formattedDateStr = date.formattedString(dateStyle: .none, timeStyle: .short)
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        guard let menu = Sections(rawValue: indexPath.section) else { return }
+        switch menu {
+        case .timeToOn:
+            DiskService.saveTimeTo(on: formattedDateStr)
+        case .timeToLeave:
+            DiskService.saveTimeTo(leave: formattedDateStr)
+        case .officeLocation:
+            break
+        }
     }
     
     /*
@@ -101,6 +122,12 @@ class SettingViewController: UITableViewController, AUPickerCellDelegate {
     // MARK: - Action
     @IBAction
     func tapDone(sender: UIBarButtonItem) {
+        guard DiskService.timeToOn != nil, DiskService.timeToLeave != nil else {
+            let alert = UIAlertController(title: "Confirm".localized, message: "NotSetYourTimeToOnOrLeave".localized, preferredStyle: .alert)
+            alert.addEmptyOkAction()
+            present(alert, animated: true, completion: nil)
+            return
+        }
         dismiss(animated: true, completion: nil)
     }
     
@@ -108,5 +135,22 @@ class SettingViewController: UITableViewController, AUPickerCellDelegate {
         case officeLocation = 0,
         timeToOn,
         timeToLeave
+        
+        func savedDate() -> Date? {
+            switch self {
+            case .officeLocation:
+                break
+            case .timeToOn:
+                return formatted(saved: DiskService.timeToOn)
+            case .timeToLeave:
+                return formatted(saved: DiskService.timeToLeave)
+            }
+            return nil
+        }
+        
+        private func formatted(saved: String?) -> Date? {
+            guard let saved = saved else { return nil }
+            return Date.dateFromString(string: saved, timeStyle: .short)
+        }
     }
 }

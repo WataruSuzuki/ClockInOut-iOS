@@ -20,27 +20,29 @@ class LocationService: NSObject,
     var hasOfficeLocation: Bool {
         get {
             if latitude == nil || longitude == nil {
-                let standard = UserDefaults.standard
-                guard let latitude = standard.object(forKey: "latitude") as? Double,
-                    let longitude = standard.object(forKey: "longitude") as? Double else {
+                let officeLocation = DiskService.loadOfficeLocation()
+                guard let latitude = officeLocation.latitude,
+                    let longitude = officeLocation.longitude else {
                     return false
                 }
                 
                 self.latitude = latitude
                 self.longitude = longitude
+                self.address = officeLocation.officeAddress
             }
             return true
         }
     }
     private var latitude: CLLocationDegrees?
     private var longitude: CLLocationDegrees?
+    private var address: String?
     var officeAddress: String {
         get {
-            let standard = UserDefaults.standard
-            guard let officeAddress = standard.object(forKey: "officeAddress") as? String else {
-                return ""
+            if let address = address, !address.isEmpty {
+                return address
+            } else {
+                return "NoData".localized
             }
-            return officeAddress
         }
     }
 
@@ -61,17 +63,14 @@ class LocationService: NSObject,
     }
     
     private func saveOfficeLocation(location: CLLocation) {
-        let standard = UserDefaults.standard
-        standard.set(location.coordinate.latitude, forKey: "latitude")
-        standard.set(location.coordinate.longitude, forKey: "longitude")
+        DiskService.saveOfficeLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         
         let geoCoder = CLGeocoder()
         geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
             if let placemark = placemarks?.first,
                 let name = placemark.name, let locality = placemark.locality, let administrativeArea = placemark.administrativeArea {
-                standard.set("\(name), \(locality), \(administrativeArea)", forKey: "officeAddress")
+                DiskService.saveOfficeAddress(address: "\(name), \(locality), \(administrativeArea)")
             }
-            standard.synchronize()
         }
     }
     

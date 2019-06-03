@@ -20,6 +20,8 @@
 		CC5183A2231E55950029CEE2 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5183A1231E55950029CEE2 /* SettingViewController.swift */; };
 		CC5183A4231E57890029CEE2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5183A3231E57890029CEE2 /* LocationService.swift */; };
 		CC5183A6231F6A560029CEE2 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CC5183A5231F6A550029CEE2 /* Settings.bundle */; };
+		CC5183A8231F73F40029CEE2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC5183A7231F73F40029CEE2 /* Localizable.strings */; };
+		CC5183AB231F80C60029CEE2 /* DiskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5183AA231F80C60029CEE2 /* DiskService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		CC5183A1231E55950029CEE2 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		CC5183A3231E57890029CEE2 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		CC5183A5231F6A550029CEE2 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		CC5183A7231F73F40029CEE2 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		CC5183AA231F80C60029CEE2 /* DiskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,15 +131,15 @@
 			isa = PBXGroup;
 			children = (
 				CC518371231E46CD0029CEE2 /* AppDelegate.swift */,
-				CC518373231E46CD0029CEE2 /* FirstViewController.swift */,
-				CC518375231E46CD0029CEE2 /* SecondViewController.swift */,
 				CC518377231E46CD0029CEE2 /* Main.storyboard */,
 				CC51837A231E46D00029CEE2 /* Assets.xcassets */,
 				CC51837C231E46D00029CEE2 /* LaunchScreen.storyboard */,
 				CC51837F231E46D10029CEE2 /* Info.plist */,
-				CC5183A1231E55950029CEE2 /* SettingViewController.swift */,
+				CC5183A9231F7F3C0029CEE2 /* ViewController */,
 				CC5183A3231E57890029CEE2 /* LocationService.swift */,
+				CC5183AA231F80C60029CEE2 /* DiskService.swift */,
 				CC5183A5231F6A550029CEE2 /* Settings.bundle */,
+				CC5183A7231F73F40029CEE2 /* Localizable.strings */,
 			);
 			path = ClockInOut;
 			sourceTree = "<group>";
@@ -156,6 +160,16 @@
 				CC518395231E46D10029CEE2 /* Info.plist */,
 			);
 			path = ClockInOutUITests;
+			sourceTree = "<group>";
+		};
+		CC5183A9231F7F3C0029CEE2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CC518373231E46CD0029CEE2 /* FirstViewController.swift */,
+				CC518375231E46CD0029CEE2 /* SecondViewController.swift */,
+				CC5183A1231E55950029CEE2 /* SettingViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		F3BEFF9742DB20BBB44A8536 /* Pods */ = {
@@ -281,6 +295,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC5183A8231F73F40029CEE2 /* Localizable.strings in Resources */,
 				CC5183A6231F6A560029CEE2 /* Settings.bundle in Resources */,
 				CC51837E231E46D00029CEE2 /* LaunchScreen.storyboard in Resources */,
 				CC51837B231E46D00029CEE2 /* Assets.xcassets in Resources */,
@@ -375,6 +390,7 @@
 			files = (
 				CC518376231E46CD0029CEE2 /* SecondViewController.swift in Sources */,
 				CC518372231E46CD0029CEE2 /* AppDelegate.swift in Sources */,
+				CC5183AB231F80C60029CEE2 /* DiskService.swift in Sources */,
 				CC5183A4231E57890029CEE2 /* LocationService.swift in Sources */,
 				CC518374231E46CD0029CEE2 /* FirstViewController.swift in Sources */,
 				CC5183A2231E55950029CEE2 /* SettingViewController.swift in Sources */,
