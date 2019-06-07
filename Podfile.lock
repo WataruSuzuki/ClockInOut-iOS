@@ -1,5 +1,6 @@
 PODS:
   - AUPickerCell (1.0.2.0)
+  - EasyNotification (0.0.1)
   - PureLayout (3.1.4)
   - SwiftExtensionChimera (0.0.2):
     - PureLayout
@@ -8,6 +9,7 @@ PODS:
 
 DEPENDENCIES:
   - AUPickerCell
+  - EasyNotification (from `https://github.com/WataruSuzuki/EasyNotification.git`)
   - SwiftExtensionChimera (from `https://github.com/WataruSuzuki/SwiftExtensionChimera.git`)
 
 SPEC REPOS:
@@ -17,20 +19,26 @@ SPEC REPOS:
     - TinyConstraints
 
 EXTERNAL SOURCES:
+  EasyNotification:
+    :git: https://github.com/WataruSuzuki/EasyNotification.git
   SwiftExtensionChimera:
     :git: https://github.com/WataruSuzuki/SwiftExtensionChimera.git
 
 CHECKOUT OPTIONS:
+  EasyNotification:
+    :commit: 875ef8f7f932c2564367a818d3124ebad61197db
+    :git: https://github.com/WataruSuzuki/EasyNotification.git
   SwiftExtensionChimera:
-    :commit: 64d4a13003a9dcef290fb99e0e1dfe53aa07914f
+    :commit: efca81df7b8efdca728836b0706dfb21e59f4893
     :git: https://github.com/WataruSuzuki/SwiftExtensionChimera.git
 
 SPEC CHECKSUMS:
   AUPickerCell: b6f788d62f449014204776ff6fdc841aebbc352f
+  EasyNotification: 4e288456da35af115a425ef2783974e43a477dc1
   PureLayout: f08c01b8dec00bb14a1fefa3de4c7d9c265df85e
   SwiftExtensionChimera: d3753944d68e2c3d197797f41af45849b541bdac
   TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
 
-PODFILE CHECKSUM: 47b163b3665087c6280356db754a157a4a50663c
+PODFILE CHECKSUM: 72503d340400bb6cba7fccbf6a7a3c1d81fa1ba5
 
 COCOAPODS: 1.7.4

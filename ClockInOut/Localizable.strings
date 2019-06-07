@@ -10,8 +10,15 @@ NoData = "No Data";
 Confirm = "Confirm";
 UpdateOfficeLocation = "Update office location by current position?";
 Yes = "Yes";
+Office = "Office";
 
 officeLocation = "Office location";
 timeToOn = "Time to Come";
 timeToLeave = "Time to leave";
 NotSetYourTimeToOnOrLeave = "Not set the Time to Come or Leave yet...";
+
+StartMonitoring = "Start monitoring geofence";
+EnterRegion = "Enter Region";
+ExitRegion = "Exit Region";
+DetermineState = "Determine State";
+monitoringDidFail = "monitoring Did Fail";

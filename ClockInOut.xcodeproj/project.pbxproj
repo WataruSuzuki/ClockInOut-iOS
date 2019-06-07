@@ -22,6 +22,7 @@
 		CC5183A6231F6A560029CEE2 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CC5183A5231F6A550029CEE2 /* Settings.bundle */; };
 		CC5183A8231F73F40029CEE2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC5183A7231F73F40029CEE2 /* Localizable.strings */; };
 		CC5183AB231F80C60029CEE2 /* DiskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5183AA231F80C60029CEE2 /* DiskService.swift */; };
+		CC5183AF2320BC130029CEE2 /* CheckInOutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5183AE2320BC130029CEE2 /* CheckInOutService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		CC5183A5231F6A550029CEE2 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		CC5183A7231F73F40029CEE2 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CC5183AA231F80C60029CEE2 /* DiskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskService.swift; sourceTree = "<group>"; };
+		CC5183AE2320BC130029CEE2 /* CheckInOutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInOutService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				CC5183A9231F7F3C0029CEE2 /* ViewController */,
 				CC5183A3231E57890029CEE2 /* LocationService.swift */,
 				CC5183AA231F80C60029CEE2 /* DiskService.swift */,
+				CC5183AE2320BC130029CEE2 /* CheckInOutService.swift */,
 				CC5183A5231F6A550029CEE2 /* Settings.bundle */,
 				CC5183A7231F73F40029CEE2 /* Localizable.strings */,
 			);
@@ -388,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC5183AF2320BC130029CEE2 /* CheckInOutService.swift in Sources */,
 				CC518376231E46CD0029CEE2 /* SecondViewController.swift in Sources */,
 				CC518372231E46CD0029CEE2 /* AppDelegate.swift in Sources */,
 				CC5183AB231F80C60029CEE2 /* DiskService.swift in Sources */,

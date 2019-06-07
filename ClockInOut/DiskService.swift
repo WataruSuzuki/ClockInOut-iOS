@@ -15,6 +15,8 @@ class DiskService: NSObject {
     private static let key_officeAddress = "officeAddress"
     private static let key_timeToOn = "timeToOn"
     private static let key_timeToLeave = "timeToLeave"
+    private static let key_lastCheckOnTime = "lastCheckOnTime"
+    private static let key_lastCheckOutTime = "lastCheckOutTime"
 
     static func loadOfficeLocation() -> (
         officeAddress: String?,
@@ -40,27 +42,47 @@ class DiskService: NSObject {
         standard.synchronize()
     }
 
-    static func saveTimeTo(on: String) {
-        let standard = UserDefaults.standard
-        standard.set(on, forKey: key_timeToOn)
-        standard.synchronize()
+    static var lastCheckOnTime: String? {
+        get {
+            return UserDefaults.standard.object(forKey: key_lastCheckOnTime) as? String
+        }
+        set (value) {
+            let standard = UserDefaults.standard
+            standard.set(value, forKey: key_lastCheckOnTime)
+            standard.synchronize()
+        }
     }
     
-    static func saveTimeTo(leave: String) {
-        let standard = UserDefaults.standard
-        standard.set(leave, forKey: key_timeToLeave)
-        standard.synchronize()
+    static var lastCheckOutTime: String? {
+        get {
+            return UserDefaults.standard.object(forKey: key_lastCheckOutTime) as? String
+        }
+        set (value) {
+            let standard = UserDefaults.standard
+            standard.set(value, forKey: key_lastCheckOutTime)
+            standard.synchronize()
+        }
     }
     
     static var timeToOn: String? {
         get {
             return UserDefaults.standard.object(forKey: key_timeToOn) as? String
         }
+        set (value) {
+            let standard = UserDefaults.standard
+            standard.set(value, forKey: key_timeToOn)
+            standard.synchronize()
+        }
     }
     
     static var timeToLeave: String? {
         get {
             return UserDefaults.standard.object(forKey: key_timeToLeave) as? String
+        }
+        set (value) {
+            let standard = UserDefaults.standard
+            standard.set(value, forKey: key_timeToLeave)
+            standard.synchronize()
         }
     }
 }

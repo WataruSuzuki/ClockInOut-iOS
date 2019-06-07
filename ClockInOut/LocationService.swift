@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import EasyNotification
 
 class LocationService: NSObject,
     CLLocationManagerDelegate
@@ -57,19 +58,22 @@ class LocationService: NSObject,
         guard hasOfficeLocation else { return }
         
         let moniteringCordinate = CLLocationCoordinate2DMake(latitude!, longitude!)
-        let moniteringRegion = CLCircularRegion.init(center: moniteringCordinate, radius: 1000.0, identifier: "Office")
+        let moniteringRegion = CLCircularRegion.init(center: moniteringCordinate, radius: 10.0, identifier: "Office".localized)
         
         manager.startMonitoring(for: moniteringRegion)
     }
     
     private func saveOfficeLocation(location: CLLocation) {
-        DiskService.saveOfficeLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        latitude = location.coordinate.latitude
+        longitude = location.coordinate.longitude
+        DiskService.saveOfficeLocation(latitude: latitude!, longitude: longitude!)
         
         let geoCoder = CLGeocoder()
         geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
             if let placemark = placemarks?.first,
                 let name = placemark.name, let locality = placemark.locality, let administrativeArea = placemark.administrativeArea {
-                DiskService.saveOfficeAddress(address: "\(name), \(locality), \(administrativeArea)")
+                self.address = "\(name), \(locality), \(administrativeArea)"
+                DiskService.saveOfficeAddress(address: self.address!)
             }
         }
     }
@@ -108,19 +112,42 @@ class LocationService: NSObject,
     }
     
     func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
-        print(#function)
+        EasyNotification.shared.schedule(title: region.identifier, body: "StartMonitoring".localized, action: "OK", requestIdentifier: "didStartMonitoringFor")
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        print(#function)
+        CheckInOutService.checkIn()
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        print(#function)
+        CheckInOutService.checkOut()
     }
     
     func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
-        print("\(#function) state: \(state), region: \(region)")
+        guard let timeToOn = DiskService.timeToOn, let timeToLeave = DiskService.timeToLeave else { return }
+        let now = Date()
+        let checked = now.formattedString(dateStyle: .medium, timeStyle: .none)
+
+        switch state {
+        case .inside:
+            guard Date.dateFromString(string: timeToLeave, timeStyle: .short) < now,
+                DiskService.lastCheckOutTime != checked else { return }
+            EasyNotification.shared.schedule(
+                title: "(・∀・)b",
+                subTitle: "\(now.formattedString(dateStyle: .none, timeStyle: .short))",
+                body: "timeToLeave".localized, action: "OK", requestIdentifier: state.describing
+            )
+        case .outside:
+            guard Date.dateFromString(string: timeToOn, timeStyle: .short) > now,
+                DiskService.lastCheckOnTime != checked else { return }
+            EasyNotification.shared.schedule(
+                title: "(・A・)q",
+                subTitle: "\(now.formattedString(dateStyle: .none, timeStyle: .short))",
+                body: "timeToOn".localized, action: "OK", requestIdentifier: state.describing
+            )
+        case .unknown:
+            break
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {

@@ -7,16 +7,25 @@
 //
 
 import UIKit
+import EasyNotification
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    // MARK: - life cycle
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         LocationService.shared.start()
+        EasyNotification.shared.register(application: application)
+        EasyNotification.shared.willPresent = { (identifier) in
+            print("willPresent: \(identifier)")
+        }
+        EasyNotification.shared.didReceive = { (identifier) in
+            print("didReceive: \(identifier)")
+        }
         return true
     }
 
@@ -42,6 +51,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    // MARK: - notification
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        EasyNotification.shared.notify(application, didFailToRegisterForRemoteNotificationsWithError: error)
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        EasyNotification.shared.notify(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        EasyNotification.shared.notify(application, didReceiveRemoteNotification: userInfo)
+    }
+    
+    // MARK: - notification (deprecated...)
+    
+    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+        
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        
+    }
+    
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        
+    }
+    
+    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, for notification: UILocalNotification, completionHandler: @escaping () -> Void) {
+        
+    }
+    
+    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable : Any], completionHandler: @escaping () -> Void) {
+        
+    }
+    
+    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, for notification: UILocalNotification, withResponseInfo responseInfo: [AnyHashable : Any], completionHandler: @escaping () -> Void) {
+        
+    }
+    
+    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable : Any], withResponseInfo responseInfo: [AnyHashable : Any], completionHandler: @escaping () -> Void) {
+        
+    }
 }
 

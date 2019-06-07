@@ -2,8 +2,9 @@ platform :ios,'10.0'
 use_frameworks!
 
 target "ClockInOut" do
-  pod 'SwiftExtensionChimera', :git => 'https://github.com/WataruSuzuki/SwiftExtensionChimera.git'
   pod 'AUPickerCell'
+  pod 'EasyNotification', :git => 'https://github.com/WataruSuzuki/EasyNotification.git'
+  pod 'SwiftExtensionChimera', :git => 'https://github.com/WataruSuzuki/SwiftExtensionChimera.git'
 
   target 'ClockInOutTests' do
     inherit! :search_paths

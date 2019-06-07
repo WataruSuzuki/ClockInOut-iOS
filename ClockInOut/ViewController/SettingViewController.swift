@@ -25,7 +25,7 @@ class SettingViewController: UITableViewController, AUPickerCellDelegate {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return Sections.allCases.count
+        return Settings.allCases.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,13 +36,15 @@ class SettingViewController: UITableViewController, AUPickerCellDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
-        if let menu = Sections(rawValue: indexPath.section) {
+        if let menu = Settings(rawValue: indexPath.section) {
+            cell.textLabel?.text = String(describing: menu).localized
             switch menu {
             case .timeToOn: fallthrough
             case .timeToLeave:
                 return pickerCell(menu, cellForRowAt: indexPath)
+            case .account:
+                break
             case .officeLocation:
-                cell.textLabel?.text = String(describing: menu)
                 cell.detailTextLabel?.text = LocationService.shared.officeAddress
             }
         }
@@ -50,7 +52,7 @@ class SettingViewController: UITableViewController, AUPickerCellDelegate {
         return cell
     }
     
-    private func pickerCell(_ menu: Sections, cellForRowAt indexPath: IndexPath) -> AUPickerCell {
+    private func pickerCell(_ menu: Settings, cellForRowAt indexPath: IndexPath) -> AUPickerCell {
         let cell = AUPickerCell(type: .date, reuseIdentifier: "reuseIdentifier")
         cell.delegate = self
         cell.datePickerMode = .time
@@ -64,8 +66,10 @@ class SettingViewController: UITableViewController, AUPickerCellDelegate {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let menu = Sections(rawValue: indexPath.section) else { return }
+        guard let menu = Settings(rawValue: indexPath.section) else { return }
         switch menu {
+        case .account:
+            break
         case .officeLocation:
             let alert = UIAlertController(title: "Confirm".localized, message: "UpdateOfficeLocation".localized, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yes".localized, style: .default, handler: { (action) in
@@ -98,12 +102,13 @@ class SettingViewController: UITableViewController, AUPickerCellDelegate {
         }
         let formattedDateStr = date.formattedString(dateStyle: .none, timeStyle: .short)
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        guard let menu = Sections(rawValue: indexPath.section) else { return }
+        guard let menu = Settings(rawValue: indexPath.section) else { return }
         switch menu {
         case .timeToOn:
-            DiskService.saveTimeTo(on: formattedDateStr)
+            DiskService.timeToOn = formattedDateStr
         case .timeToLeave:
-            DiskService.saveTimeTo(leave: formattedDateStr)
+            DiskService.timeToLeave = formattedDateStr
+        case .account: fallthrough
         case .officeLocation:
             break
         }
@@ -131,13 +136,15 @@ class SettingViewController: UITableViewController, AUPickerCellDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-    enum Sections: Int, CaseIterable {
-        case officeLocation = 0,
+    enum Settings: Int, CaseIterable {
+        case account = 0,
+        officeLocation,
         timeToOn,
         timeToLeave
         
         func savedDate() -> Date? {
             switch self {
+            case .account: fallthrough
             case .officeLocation:
                 break
             case .timeToOn:
