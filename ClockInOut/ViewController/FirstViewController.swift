@@ -7,17 +7,8 @@
 //
 
 import UIKit
-import CoreLocation
 
-class FirstViewController: UIViewController,
-    CLLocationManagerDelegate
-{
+class FirstViewController: UIViewController {
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-    }
-    
 }
 

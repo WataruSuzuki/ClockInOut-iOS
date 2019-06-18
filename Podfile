@@ -2,15 +2,16 @@ platform :ios,'10.0'
 use_frameworks!
 
 target "ClockInOut" do
-  pod 'AUPickerCell'
-  pod 'EasyNotification', :git => 'https://github.com/WataruSuzuki/EasyNotification.git'
-  pod 'SwiftExtensionChimera', :git => 'https://github.com/WataruSuzuki/SwiftExtensionChimera.git'
+    pod 'Alamofire', '~> 4.7'
+    pod 'SwiftyFORM', :git => 'https://github.com/neoneye/SwiftyFORM.git'
+    pod 'AUPickerCell'
+    pod 'EasyNotification', :git => 'https://github.com/WataruSuzuki/EasyNotification.git'
+    pod 'SwiftExtensionChimera', :git => 'https://github.com/WataruSuzuki/SwiftExtensionChimera.git'
 
-  target 'ClockInOutTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
+    target 'ClockInOutTests' do
+        inherit! :search_paths
+        # Pods for testing
+    end
 end
 
 post_install do | installer |

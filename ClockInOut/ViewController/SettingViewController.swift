@@ -12,16 +12,6 @@ import SwiftExtensionChimera
 
 class SettingViewController: UITableViewController, AUPickerCellDelegate {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -37,12 +27,19 @@ class SettingViewController: UITableViewController, AUPickerCellDelegate {
 
         // Configure the cell...
         if let menu = Settings(rawValue: indexPath.section) {
+            cell.accessoryType = .none
             cell.textLabel?.text = String(describing: menu).localized
             switch menu {
             case .timeToOn: fallthrough
             case .timeToLeave:
                 return pickerCell(menu, cellForRowAt: indexPath)
             case .account:
+                cell.accessoryType = .disclosureIndicator
+                if let accountInfo = DiskService.accountInfo,
+                    let items = DiskService.convertForm(data: accountInfo)
+                {
+                    cell.detailTextLabel?.text = items.first(where: {$0.elementIdentifier == String(describing: AccountType.self)})?.value
+                }
                 break
             case .officeLocation:
                 cell.detailTextLabel?.text = LocationService.shared.officeAddress
@@ -69,11 +66,11 @@ class SettingViewController: UITableViewController, AUPickerCellDelegate {
         guard let menu = Settings(rawValue: indexPath.section) else { return }
         switch menu {
         case .account:
-            break
+            performSegue(withIdentifier: String(describing: ChooseSignInAccountViewController.self), sender: self)
         case .officeLocation:
             let alert = UIAlertController(title: "Confirm".localized, message: "UpdateOfficeLocation".localized, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yes".localized, style: .default, handler: { (action) in
-                LocationService.shared.isUpdateOfficeLocation = true
+                self.requestToUpdateOfficeLocation()
             }))
             alert.addEmptyCancelAction()
             present(alert, animated: true, completion: nil)
@@ -84,6 +81,20 @@ class SettingViewController: UITableViewController, AUPickerCellDelegate {
                 cell.selectedInTableView(tableView)
             }
         }
+    }
+    
+    func requestToUpdateOfficeLocation() {
+        LocationService.shared.didUpdate = { (address) in
+            let confirm = UIAlertController(title: "Confirm".localized, message: address, preferredStyle: .alert)
+            confirm.addEmptyOkAction()
+            confirm.addAction(UIAlertAction(title: "Retry", style: .default, handler: { (action) in
+                self.requestToUpdateOfficeLocation()
+            }))
+            self.present(confirm, animated: true, completion: {
+                LocationService.shared.didUpdate = nil
+            })
+        }
+        LocationService.shared.requestUpdateOfficeLocation()
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -134,30 +145,5 @@ class SettingViewController: UITableViewController, AUPickerCellDelegate {
             return
         }
         dismiss(animated: true, completion: nil)
-    }
-    
-    enum Settings: Int, CaseIterable {
-        case account = 0,
-        officeLocation,
-        timeToOn,
-        timeToLeave
-        
-        func savedDate() -> Date? {
-            switch self {
-            case .account: fallthrough
-            case .officeLocation:
-                break
-            case .timeToOn:
-                return formatted(saved: DiskService.timeToOn)
-            case .timeToLeave:
-                return formatted(saved: DiskService.timeToLeave)
-            }
-            return nil
-        }
-        
-        private func formatted(saved: String?) -> Date? {
-            guard let saved = saved else { return nil }
-            return Date.dateFromString(string: saved, timeStyle: .short)
-        }
     }
 }

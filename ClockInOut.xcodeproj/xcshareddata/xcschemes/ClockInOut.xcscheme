@@ -37,6 +37,10 @@
                BlueprintName = "ClockInOutTests"
                ReferencedContainer = "container:ClockInOut.xcodeproj">
             </BuildableReference>
+            <LocationScenarioReference
+               identifier = "New York, NY, USA"
+               referenceType = "1">
+            </LocationScenarioReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
@@ -47,6 +51,10 @@
                BlueprintName = "ClockInOutUITests"
                ReferencedContainer = "container:ClockInOut.xcodeproj">
             </BuildableReference>
+            <LocationScenarioReference
+               identifier = "San Francisco, CA, USA"
+               referenceType = "1">
+            </LocationScenarioReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
@@ -65,7 +73,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = "ja"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -85,7 +92,7 @@
       <AdditionalOptions>
       </AdditionalOptions>
       <LocationScenarioReference
-         identifier = "Tokyo, Japan"
+         identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
          referenceType = "1">
       </LocationScenarioReference>
    </LaunchAction>

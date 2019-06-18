@@ -18,6 +18,8 @@ class DiskService: NSObject {
     private static let key_lastCheckOnTime = "lastCheckOnTime"
     private static let key_lastCheckOutTime = "lastCheckOutTime"
 
+    private static let key_accountInfo = "accountInfo"
+
     static func loadOfficeLocation() -> (
         officeAddress: String?,
         latitude: Double?,longitude: Double?) {
@@ -83,6 +85,26 @@ class DiskService: NSObject {
             let standard = UserDefaults.standard
             standard.set(value, forKey: key_timeToLeave)
             standard.synchronize()
+        }
+    }
+    
+    static var accountInfo: Data? {
+        get {
+            return UserDefaults.standard.object(forKey: key_accountInfo) as? Data
+        }
+        set (value) {
+            let standard = UserDefaults.standard
+            standard.set(value, forKey: key_accountInfo)
+            standard.synchronize()
+        }
+    }
+    
+    static func convertForm(data: Data) -> [FormItem]? {
+        do {
+            return try JSONDecoder().decode([FormItem].self, from: data)
+        } catch let error {
+            print(error)
+            return nil
         }
     }
 }

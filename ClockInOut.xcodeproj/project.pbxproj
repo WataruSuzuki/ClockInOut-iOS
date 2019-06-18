@@ -9,9 +9,13 @@
 /* Begin PBXBuildFile section */
 		26127119EEECC41E511802BC /* Pods_ClockInOut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56DB6F8474E83F10D5F560A2 /* Pods_ClockInOut.framework */; };
 		416AC1A1168F466423B6B8E2 /* Pods_ClockInOutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA81E6FD3A3C2B80CAA2A98 /* Pods_ClockInOutTests.framework */; };
+		9603C6C42324BDB500CE0C87 /* FormItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9603C6C32324BDB500CE0C87 /* FormItem.swift */; };
+		9603C6C62324D54C00CE0C87 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9603C6C52324D54C00CE0C87 /* Settings.swift */; };
+		9603C6C82324D5A200CE0C87 /* AccountType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9603C6C72324D5A200CE0C87 /* AccountType.swift */; };
+		9603C6CB2324DA4700CE0C87 /* ChooseSignInAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9603C6CA2324DA4700CE0C87 /* ChooseSignInAccountViewController.swift */; };
 		CC518372231E46CD0029CEE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC518371231E46CD0029CEE2 /* AppDelegate.swift */; };
 		CC518374231E46CD0029CEE2 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC518373231E46CD0029CEE2 /* FirstViewController.swift */; };
-		CC518376231E46CD0029CEE2 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC518375231E46CD0029CEE2 /* SecondViewController.swift */; };
+		CC518376231E46CD0029CEE2 /* AsIsWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC518375231E46CD0029CEE2 /* AsIsWebViewController.swift */; };
 		CC518379231E46CD0029CEE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC518377231E46CD0029CEE2 /* Main.storyboard */; };
 		CC51837B231E46D00029CEE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC51837A231E46D00029CEE2 /* Assets.xcassets */; };
 		CC51837E231E46D00029CEE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC51837C231E46D00029CEE2 /* LaunchScreen.storyboard */; };
@@ -23,6 +27,7 @@
 		CC5183A8231F73F40029CEE2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC5183A7231F73F40029CEE2 /* Localizable.strings */; };
 		CC5183AB231F80C60029CEE2 /* DiskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5183AA231F80C60029CEE2 /* DiskService.swift */; };
 		CC5183AF2320BC130029CEE2 /* CheckInOutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5183AE2320BC130029CEE2 /* CheckInOutService.swift */; };
+		CC5183B823225E540029CEE2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5183B723225E540029CEE2 /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,11 +53,15 @@
 		5E08C7A025F7379228C17BA4 /* Pods-ClockInOutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClockInOutTests.release.xcconfig"; path = "Target Support Files/Pods-ClockInOutTests/Pods-ClockInOutTests.release.xcconfig"; sourceTree = "<group>"; };
 		6A567A4FE8770A70E14BD93D /* Pods-ClockInOutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClockInOutTests.debug.xcconfig"; path = "Target Support Files/Pods-ClockInOutTests/Pods-ClockInOutTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6DA9253FC20DA218D7E4332B /* Pods-ClockInOut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClockInOut.debug.xcconfig"; path = "Target Support Files/Pods-ClockInOut/Pods-ClockInOut.debug.xcconfig"; sourceTree = "<group>"; };
+		9603C6C32324BDB500CE0C87 /* FormItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormItem.swift; sourceTree = "<group>"; };
+		9603C6C52324D54C00CE0C87 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		9603C6C72324D5A200CE0C87 /* AccountType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountType.swift; sourceTree = "<group>"; };
+		9603C6CA2324DA4700CE0C87 /* ChooseSignInAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSignInAccountViewController.swift; sourceTree = "<group>"; };
 		C99BE7708C12198B20DD3D3F /* Pods-ClockInOut.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClockInOut.release.xcconfig"; path = "Target Support Files/Pods-ClockInOut/Pods-ClockInOut.release.xcconfig"; sourceTree = "<group>"; };
 		CC51836E231E46CD0029CEE2 /* ClockInOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClockInOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC518371231E46CD0029CEE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC518373231E46CD0029CEE2 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		CC518375231E46CD0029CEE2 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		CC518375231E46CD0029CEE2 /* AsIsWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsIsWebViewController.swift; sourceTree = "<group>"; };
 		CC518378231E46CD0029CEE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC51837A231E46D00029CEE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC51837D231E46D00029CEE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -69,6 +78,7 @@
 		CC5183A7231F73F40029CEE2 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CC5183AA231F80C60029CEE2 /* DiskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskService.swift; sourceTree = "<group>"; };
 		CC5183AE2320BC130029CEE2 /* CheckInOutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInOutService.swift; sourceTree = "<group>"; };
+		CC5183B723225E540029CEE2 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +117,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9603C6C22324BD4500CE0C87 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CC5183A3231E57890029CEE2 /* LocationService.swift */,
+				CC5183AA231F80C60029CEE2 /* DiskService.swift */,
+				CC5183AE2320BC130029CEE2 /* CheckInOutService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		9603C6C92324D9B900CE0C87 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				9603C6C72324D5A200CE0C87 /* AccountType.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 		CC518365231E46CD0029CEE2 = {
 			isa = PBXGroup;
 			children = (
@@ -137,12 +165,13 @@
 				CC51837A231E46D00029CEE2 /* Assets.xcassets */,
 				CC51837C231E46D00029CEE2 /* LaunchScreen.storyboard */,
 				CC51837F231E46D10029CEE2 /* Info.plist */,
-				CC5183A9231F7F3C0029CEE2 /* ViewController */,
-				CC5183A3231E57890029CEE2 /* LocationService.swift */,
-				CC5183AA231F80C60029CEE2 /* DiskService.swift */,
-				CC5183AE2320BC130029CEE2 /* CheckInOutService.swift */,
-				CC5183A5231F6A550029CEE2 /* Settings.bundle */,
 				CC5183A7231F73F40029CEE2 /* Localizable.strings */,
+				9603C6C52324D54C00CE0C87 /* Settings.swift */,
+				9603C6C32324BDB500CE0C87 /* FormItem.swift */,
+				9603C6C92324D9B900CE0C87 /* Account */,
+				9603C6C22324BD4500CE0C87 /* Service */,
+				CC5183A9231F7F3C0029CEE2 /* ViewController */,
+				CC5183A5231F6A550029CEE2 /* Settings.bundle */,
 			);
 			path = ClockInOut;
 			sourceTree = "<group>";
@@ -169,8 +198,10 @@
 			isa = PBXGroup;
 			children = (
 				CC518373231E46CD0029CEE2 /* FirstViewController.swift */,
-				CC518375231E46CD0029CEE2 /* SecondViewController.swift */,
+				CC518375231E46CD0029CEE2 /* AsIsWebViewController.swift */,
 				CC5183A1231E55950029CEE2 /* SettingViewController.swift */,
+				9603C6CA2324DA4700CE0C87 /* ChooseSignInAccountViewController.swift */,
+				CC5183B723225E540029CEE2 /* SignInViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -392,12 +423,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC5183AF2320BC130029CEE2 /* CheckInOutService.swift in Sources */,
-				CC518376231E46CD0029CEE2 /* SecondViewController.swift in Sources */,
+				9603C6C42324BDB500CE0C87 /* FormItem.swift in Sources */,
+				CC518376231E46CD0029CEE2 /* AsIsWebViewController.swift in Sources */,
+				CC5183B823225E540029CEE2 /* SignInViewController.swift in Sources */,
+				9603C6C62324D54C00CE0C87 /* Settings.swift in Sources */,
 				CC518372231E46CD0029CEE2 /* AppDelegate.swift in Sources */,
 				CC5183AB231F80C60029CEE2 /* DiskService.swift in Sources */,
 				CC5183A4231E57890029CEE2 /* LocationService.swift in Sources */,
 				CC518374231E46CD0029CEE2 /* FirstViewController.swift in Sources */,
 				CC5183A2231E55950029CEE2 /* SettingViewController.swift in Sources */,
+				9603C6C82324D5A200CE0C87 /* AccountType.swift in Sources */,
+				9603C6CB2324DA4700CE0C87 /* ChooseSignInAccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,7 +539,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -558,7 +594,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

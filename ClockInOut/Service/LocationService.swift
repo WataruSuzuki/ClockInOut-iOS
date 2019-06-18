@@ -17,7 +17,6 @@ class LocationService: NSObject,
         return LocationService()
     }()
     let manager = CLLocationManager()
-    var isUpdateOfficeLocation = false
     var hasOfficeLocation: Bool {
         get {
             if latitude == nil || longitude == nil {
@@ -46,10 +45,25 @@ class LocationService: NSObject,
             }
         }
     }
+    private var moniteringRegion: CLCircularRegion?
+    var didUpdate:((_ address: String) -> Void)? = nil {
+        didSet {
+            if !isUpdateOfficeLocation {
+                start()
+            }
+        }
+    }
+    private var isUpdateOfficeLocation: Bool {
+        get {
+            return didUpdate != nil
+        }
+    }
+
 
     private override init() {
         super.init()
         manager.delegate = self
+        manager.activityType = .fitness
         
         handleAuthorizationStatus(status: CLLocationManager.authorizationStatus())
     }
@@ -58,9 +72,16 @@ class LocationService: NSObject,
         guard hasOfficeLocation else { return }
         
         let moniteringCordinate = CLLocationCoordinate2DMake(latitude!, longitude!)
-        let moniteringRegion = CLCircularRegion.init(center: moniteringCordinate, radius: 10.0, identifier: "Office".localized)
+        moniteringRegion = CLCircularRegion.init(center: moniteringCordinate, radius: 10.0, identifier: "Office".localized)
         
-        manager.startMonitoring(for: moniteringRegion)
+        manager.startMonitoring(for: moniteringRegion!)
+    }
+    
+    func requestUpdateOfficeLocation() {
+        if let moniteringRegion = moniteringRegion {
+            manager.stopMonitoring(for: moniteringRegion)
+        }
+        manager.requestLocation()
     }
     
     private func saveOfficeLocation(location: CLLocation) {
@@ -72,22 +93,23 @@ class LocationService: NSObject,
         geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
             if let placemark = placemarks?.first,
                 let name = placemark.name, let locality = placemark.locality, let administrativeArea = placemark.administrativeArea {
-                self.address = "\(name), \(locality), \(administrativeArea)"
-                DiskService.saveOfficeAddress(address: self.address!)
+                let address = "\(name), \(locality), \(administrativeArea)"
+                DiskService.saveOfficeAddress(address: address)
+                self.didUpdate?(address)
+                self.address = address
             }
         }
     }
     
     private func handleAuthorizationStatus(status: CLAuthorizationStatus) {
         switch status {
-        case .denied: fallthrough
-        case .authorizedWhenInUse: fallthrough
-        case .restricted:
-            break
         case .notDetermined:
             manager.requestAlwaysAuthorization()
-        case .authorizedAlways:
-            manager.startUpdatingLocation()
+        case .authorizedWhenInUse: fallthrough
+        case .authorizedAlways: fallthrough
+        case .denied: fallthrough
+        case .restricted:
+            break
         @unknown default:
             fatalError()
         }
@@ -130,7 +152,7 @@ class LocationService: NSObject,
 
         switch state {
         case .inside:
-            guard Date.dateFromString(string: timeToLeave, timeStyle: .short) < now,
+            guard timeToLeave.dateFromString(timeStyle: .short) < now,
                 DiskService.lastCheckOutTime != checked else { return }
             EasyNotification.shared.schedule(
                 title: "(・∀・)b",
@@ -138,7 +160,7 @@ class LocationService: NSObject,
                 body: "timeToLeave".localized, action: "OK", requestIdentifier: state.describing
             )
         case .outside:
-            guard Date.dateFromString(string: timeToOn, timeStyle: .short) > now,
+            guard timeToOn.dateFromString(timeStyle: .short) > now,
                 DiskService.lastCheckOnTime != checked else { return }
             EasyNotification.shared.schedule(
                 title: "(・A・)q",

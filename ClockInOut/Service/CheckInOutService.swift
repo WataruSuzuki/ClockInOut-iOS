@@ -11,7 +11,7 @@ import EasyNotification
 
 class CheckInOutService: NSObject {
 
-    static let timeThreshold = TimeInterval(exactly: 10 * 60)! // 10 minutes
+    //static let timeThreshold = TimeInterval(exactly: 10 * 60)! // 10 minutes
     
     static func checkInThreshold(nominal: String, isOn: Bool) -> Bool {
         let now = Date()
@@ -22,10 +22,10 @@ class CheckInOutService: NSObject {
             return false
         }
         
-        let nominalInverval = Date.dateFromString(string: nominal, timeStyle: .short).timeIntervalSince1970
+        let nominalInverval = nominal.dateFromString(timeStyle: .short).timeIntervalSince1970
         
         let formattedString = now.formattedString(dateStyle: .none, timeStyle: .short)
-        let intervalNow = Date.dateFromString(string: formattedString, timeStyle: .short).timeIntervalSince1970
+        let intervalNow = formattedString.dateFromString(timeStyle: .short).timeIntervalSince1970
         
         //return (nominal - timeThreshold)...(nominal + timeThreshold) ~= intervalNow
         let checked = isOn || nominalInverval < intervalNow

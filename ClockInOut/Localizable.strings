@@ -11,6 +11,9 @@ Confirm = "Confirm";
 UpdateOfficeLocation = "Update office location by current position?";
 Yes = "Yes";
 Office = "Office";
+SignIn = "Sign In";
+YourInfo = "Your information";
+WelcomeTo = "Welcome to %@";
 
 officeLocation = "Office location";
 timeToOn = "Time to Come";
