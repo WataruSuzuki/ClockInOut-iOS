@@ -1,5 +1,5 @@
 //
-//  AccountType.swift
+//  CheckInOutOperation.swift
 //  ClockInOut
 //
 //  Created by 鈴木 航 on 2019/09/08.
@@ -8,7 +8,6 @@
 
 import Foundation
 
-enum AccountType: Int, CaseIterable {
-    case unknown = 0,
-    hogefuga
+struct CheckInOutOperation: Codable {
+    let requestTime: Date
 }

@@ -35,10 +35,10 @@ class SettingViewController: UITableViewController, AUPickerCellDelegate {
                 return pickerCell(menu, cellForRowAt: indexPath)
             case .account:
                 cell.accessoryType = .disclosureIndicator
-                if let accountInfo = DiskService.accountInfo,
+                if let accountInfo = DiskService.operatorInfo,
                     let items = DiskService.convertForm(data: accountInfo)
                 {
-                    cell.detailTextLabel?.text = items.first(where: {$0.elementIdentifier == String(describing: AccountType.self)})?.value
+                    cell.detailTextLabel?.text = items.first(where: {$0.elementIdentifier == String(describing: OperatorType.self)})?.value ?? "NoData".localized
                 }
                 break
             case .officeLocation:
@@ -66,7 +66,7 @@ class SettingViewController: UITableViewController, AUPickerCellDelegate {
         guard let menu = Settings(rawValue: indexPath.section) else { return }
         switch menu {
         case .account:
-            performSegue(withIdentifier: String(describing: ChooseSignInAccountViewController.self), sender: self)
+            performSegue(withIdentifier: String(describing: ChooseSignInOperatorViewController.self), sender: self)
         case .officeLocation:
             let alert = UIAlertController(title: "Confirm".localized, message: "UpdateOfficeLocation".localized, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yes".localized, style: .default, handler: { (action) in

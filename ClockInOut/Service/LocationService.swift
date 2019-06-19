@@ -33,8 +33,8 @@ class LocationService: NSObject,
             return true
         }
     }
-    private var latitude: CLLocationDegrees?
-    private var longitude: CLLocationDegrees?
+    private(set) var latitude: CLLocationDegrees?
+    private(set) var longitude: CLLocationDegrees?
     private var address: String?
     var officeAddress: String {
         get {

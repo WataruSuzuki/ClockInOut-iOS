@@ -41,12 +41,28 @@ class CheckInOutService: NSObject {
         return checked
     }
     
+    static private func checkInOutOperator() -> Operator? {
+        if let accountInfo = DiskService.operatorInfo,
+            let items = DiskService.convertForm(data: accountInfo),
+            let name = items.first(where: {$0.elementIdentifier == String(describing: OperatorType.self)})?.value
+        {
+            return OperatorType(name: name)?.commander
+        }
+        return nil
+    }
+    
     static func checkIn() {
         guard let timeToOn = DiskService.timeToOn else { return }
         
         if checkInThreshold(nominal: timeToOn, isOn: true) {
-            let formatted = Date().formattedString(dateStyle: .none, timeStyle: .short)
-            EasyNotification.shared.schedule(title: "EnterRegion".localized,  body: "\("timeToOn".localized): \(formatted)", action: "OK", requestIdentifier: "EnterRegion")
+            if let commander = checkInOutOperator() {
+                commander.checkIn { (result) in
+                    print(result)
+                }
+            } else {
+                let formatted = Date().formattedString(dateStyle: .none, timeStyle: .short)
+                EasyNotification.shared.schedule(title: "EnterRegion".localized,  body: "\("timeToOn".localized): \(formatted)", action: "OK", requestIdentifier: "EnterRegion")
+            }
         }
     }
     
@@ -54,8 +70,14 @@ class CheckInOutService: NSObject {
         guard let timeToLeave = DiskService.timeToLeave else { return }
         
         if checkInThreshold(nominal: timeToLeave, isOn: false) {
-            let formatted = Date().formattedString(dateStyle: .none, timeStyle: .short)
-            EasyNotification.shared.schedule(title: "ExitRegion".localized,  body: "\("timeToLeave".localized): \(formatted)", action: "OK", requestIdentifier: "ExitRegion")
+            if let commander = checkInOutOperator() {
+                commander.checkOut { (result) in
+                    print(result)
+                }
+            } else {
+                let formatted = Date().formattedString(dateStyle: .none, timeStyle: .short)
+                EasyNotification.shared.schedule(title: "ExitRegion".localized,  body: "\("timeToLeave".localized): \(formatted)", action: "OK", requestIdentifier: "ExitRegion")
+            }
         }
     }
 }

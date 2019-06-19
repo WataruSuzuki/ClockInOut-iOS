@@ -18,7 +18,7 @@ class DiskService: NSObject {
     private static let key_lastCheckOnTime = "lastCheckOnTime"
     private static let key_lastCheckOutTime = "lastCheckOutTime"
 
-    private static let key_accountInfo = "accountInfo"
+    private static let key_oparatorInfo = "oparatorInfo"
 
     static func loadOfficeLocation() -> (
         officeAddress: String?,
@@ -88,13 +88,13 @@ class DiskService: NSObject {
         }
     }
     
-    static var accountInfo: Data? {
+    static var operatorInfo: Data? {
         get {
-            return UserDefaults.standard.object(forKey: key_accountInfo) as? Data
+            return UserDefaults.standard.object(forKey: key_oparatorInfo) as? Data
         }
         set (value) {
             let standard = UserDefaults.standard
-            standard.set(value, forKey: key_accountInfo)
+            standard.set(value, forKey: key_oparatorInfo)
             standard.synchronize()
         }
     }

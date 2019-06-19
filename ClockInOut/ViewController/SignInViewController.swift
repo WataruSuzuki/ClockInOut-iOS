@@ -10,7 +10,7 @@ import UIKit
 import SwiftyFORM
 
 class SignInViewController: FormViewController {
-    var accountType: AccountType!
+    var operatorType: OperatorType!
     
     override func loadView() {
         super.loadView()
@@ -20,48 +20,23 @@ class SignInViewController: FormViewController {
     override func populate(_ builder: FormBuilder) {
         builder.navigationTitle = "SignIn".localized
         builder.toolbarMode = .simple
-        builder.demo_showInfo(String(format: "WelcomeTo".localized, accountType.describing.localized))
-        builder += SectionHeaderTitleFormItem().title("YourInfo".localized)
-        builder += userId
-        builder += password
-        builder.alignLeft([userId, password])
+        builder.demo_showInfo(String(format: "WelcomeTo".localized, operatorType.describing.localized))
+        
+        // Inject operator dependency...
+        operatorType.commander?.populate(builder: builder, sender: self)
+        
         builder += SectionFormItem()
         builder += metaData
-        builder += jsonButton
+        builder += saveButton
     }
-    
-    lazy var userId: TextFieldFormItem = {
-        let instance = TextFieldFormItem()
-        instance.elementIdentifier = "ID"
-        instance.title("User ID").placeholder("Your ID or email, here")
-        instance.keyboardType = .emailAddress
-        instance.autocorrectionType = .no
-        //instance.validate(CharacterSetSpecification.lowercaseLetters, message: "Must be lowercase letters")
-        //instance.submitValidate(CountSpecification.min(6), message: "Length must be minimum 6 letters")
-        //instance.validate(CountSpecification.max(8), message: "Length must be maximum 8 letters")
-        return instance
-    }()
-    
-    lazy var password: TextFieldFormItem = {
-        let instance = TextFieldFormItem()
-        instance.elementIdentifier = "Password"
-        instance.title("Password").password().placeholder("required")
-        instance.keyboardType = .numbersAndPunctuation
-        instance.secureTextEntry = true
-        instance.autocorrectionType = .no
-        //instance.validate(CharacterSetSpecification.decimalDigits, message: "Must be digits")
-        //instance.submitValidate(CountSpecification.min(4), message: "Length must be minimum 4 digits")
-        //instance.validate(CountSpecification.max(6), message: "Length must be maximum 6 digits")
-        return instance
-    }()
-    
+
     lazy var metaData: MetaFormItem = {
         let instance = MetaFormItem()
-        instance.value(accountType.describing as AnyObject).elementIdentifier(String(describing: AccountType.self))
+        instance.value(operatorType.describing as AnyObject).elementIdentifier(String(describing: OperatorType.self))
         return instance
     }()
     
-    lazy var jsonButton: ButtonFormItem = {
+    lazy var saveButton: ButtonFormItem = {
         let instance = ButtonFormItem()
         instance.title = "SignIn".localized
         instance.action = { [weak self] in
@@ -78,21 +53,8 @@ class SignInViewController: FormViewController {
         let result = formBuilder.validate()
         switch result {
         case .valid:
-            do {
-                let jsonData = formBuilder.dump() //try JSONSerialization.data(withJSONObject: value, options: [])
-                DiskService.accountInfo = jsonData
-                
-                let items = try JSONDecoder().decode([FormItem].self, from: jsonData)
-                items.forEach { (item) in
-                    if let element = item.elementIdentifier {
-                        print("element: \(element), value = \(item.value!)")
-                    }
-                }
-                dismiss(animated: true, completion: nil)
-
-            } catch let error {
-                print(error)
-            }
+            DiskService.operatorInfo = formBuilder.dump()
+            dismiss(animated: true, completion: nil)
         case let .invalid(item, message):
             let title = item.elementIdentifier ?? "Invalid"
             form_simpleAlert(title, message)
